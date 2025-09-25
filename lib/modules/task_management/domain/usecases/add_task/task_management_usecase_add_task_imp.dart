@@ -11,9 +11,6 @@ class TaskManagementUsecaseAddTaskImp extends TaskManagementUsecaseAddTask {
   TaskManagementUsecaseAddTaskImp(this._repository);
 
   @override
-  Future<Either<Failure, TaskEntity>> call({
-    required String title,
-    required String description,
-    required bool hasCompleted,
-  }) async => await _repository.addTask(title: title, description: description, hasCompleted: hasCompleted);
+  Future<Either<Failure, TaskEntity>> call({required String title, required bool hasCompleted}) async =>
+      await _repository.addTask(title: title, hasCompleted: hasCompleted);
 }
