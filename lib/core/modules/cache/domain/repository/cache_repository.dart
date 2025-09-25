@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../errors/errors.dart';
+import '../../../../domain/errors/errors.dart';
 import '../entities/cache_entry_entity.dart';
 
 abstract class CacheRepository {

@@ -12,6 +12,8 @@ import 'domain/usecases/update_task/task_management_usecase_update_task_imp.dart
 import 'external/datasources/local/task_management_datasource_local_imp.dart';
 import 'infra/datasource/task_management_datasource.dart';
 import 'infra/repository/task_management_repository_imp.dart';
+import 'presentation/add_or_update_task/controllers/add_or_update_task_controller.dart';
+import 'presentation/task_list/controllers/task_list_controller.dart';
 
 class TaskManagementBinding extends Bindings {
   @override
@@ -25,5 +27,8 @@ class TaskManagementBinding extends Bindings {
     Get.put<TaskManagementUsecaseDeleteTask>(TaskManagementUsecaseDeleteTaskImp(Get.find()));
     Get.put<TaskManagementUsecaseGetTasks>(TaskManagementUsecaseGetTasksImp(Get.find()));
     Get.put<TaskManagementUsecaseUpdateTask>(TaskManagementUsecaseUpdateTaskImp(Get.find()));
+    // controllers
+    Get.put(AddTaskController(Get.find(), Get.find(), Get.find()));
+    Get.put(TaskListController(Get.find(), Get.find(), Get.find()));
   }
 }

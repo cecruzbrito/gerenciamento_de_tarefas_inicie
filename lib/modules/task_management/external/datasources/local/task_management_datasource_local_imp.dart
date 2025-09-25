@@ -1,6 +1,6 @@
-import '../../../../../core/cache/domain/entities/cache_entry_entity.dart';
-import '../../../../../core/cache/domain/repository/cache_repository.dart';
-import '../../../../../core/errors/errors.dart';
+import '../../../../../core/modules/cache/domain/entities/cache_entry_entity.dart';
+import '../../../../../core/modules/cache/domain/repository/cache_repository.dart';
+import '../../../../../core/domain/errors/errors.dart';
 import '../../../domain/entities/task_entity.dart';
 import '../../../infra/datasource/task_management_datasource.dart';
 import '../../models/task_model.dart';
@@ -41,10 +41,12 @@ class TaskManagementDatasourceLocalImp implements TaskManagementDatasource {
   Future<List<TaskEntity>> getTasks() async {
     try {
       final response = await _cache.get(CacheKeys.tasks);
-      return response.fold(
-        (l) => throw l,
-        (r) => r.map((e) => TaskModel.fromMap(e.data)).toList()..sort((a, b) => b.createdIn.compareTo(b.createdIn)),
-      );
+      return response.fold((l) => throw l, (r) {
+        final result = r.map((e) => TaskModel.fromMap(e.data)).toList()
+          ..sort((a, b) => b.createdIn.compareTo(b.createdIn));
+        return result;
+        // return result + result + result + result + result;
+      });
     } on Failure {
       rethrow;
     }

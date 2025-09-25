@@ -1,5 +1,5 @@
-import 'package:gerenciamento_de_tarefas/core/cache/datasource/datasource/cache_datasource_imp.dart';
-import 'package:gerenciamento_de_tarefas/core/cache/infra/repository/cache_repository_imp.dart';
+import 'package:gerenciamento_de_tarefas/core/modules/cache/datasource/datasource/cache_datasource_imp.dart';
+import 'package:gerenciamento_de_tarefas/core/modules/cache/infra/repository/cache_repository_imp.dart';
 import 'package:get/get.dart';
 
 import 'domain/repository/cache_repository.dart';

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:gerenciamento_de_tarefas/modules/task_management/domain/repository/task_management_repository.dart';
 
-import '../../../../../core/errors/errors.dart';
+import '../../../../../core/domain/errors/errors.dart';
 import '../../entities/task_entity.dart';
 import 'task_management_usecase_add_task.dart';
 

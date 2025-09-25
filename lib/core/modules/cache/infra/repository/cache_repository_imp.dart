@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../errors/errors.dart';
+import '../../../../domain/errors/errors.dart';
 import '../../domain/entities/cache_entry_entity.dart';
 import '../../domain/repository/cache_repository.dart';
 import '../datasources/cache_datasource.dart';
