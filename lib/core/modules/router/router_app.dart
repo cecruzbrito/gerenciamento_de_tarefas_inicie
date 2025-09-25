@@ -7,6 +7,7 @@ class RouterApp {
   pushNamed(String name, {dynamic args}) async => await Get.toNamed(name, arguments: args);
 
   popUntil(String name) async {
-    await Get.offNamedUntil(name, (route) => route.settings.name == name || route.isFirst);
+    Get.back();
+    // await Get.offNamedUntil(name, (route) => route.settings.name == name);
   }
 }

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       initialBinding: CoreBinding(),
       getPages: [
         GetPage(
-          name: "/add",
+          name: "/add_task",
           binding: TaskManagementBinding(),
           page: () => AddOrUpdateTaskPage(ctr: Get.find()),
         ),

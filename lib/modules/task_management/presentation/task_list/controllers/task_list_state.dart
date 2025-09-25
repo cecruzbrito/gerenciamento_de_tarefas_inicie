@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'task_list_controller.dart';
 
 abstract class TaskListState {}
@@ -18,4 +19,8 @@ class InitialGetError extends TaskListState {
 class TaskListLoaded extends TaskListState {
   final List<TaskEntity> tasks;
   TaskListLoaded({required this.tasks});
+
+  TaskListLoaded copyWith({List<TaskEntity>? tasks}) {
+    return TaskListLoaded(tasks: tasks ?? this.tasks);
+  }
 }

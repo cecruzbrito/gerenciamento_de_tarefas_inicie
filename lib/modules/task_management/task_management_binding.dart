@@ -29,6 +29,6 @@ class TaskManagementBinding extends Bindings {
     Get.put<TaskManagementUsecaseUpdateTask>(TaskManagementUsecaseUpdateTaskImp(Get.find()));
     // controllers
     Get.put(AddTaskController(Get.find(), Get.find(), Get.find()));
-    Get.put(TaskListController(Get.find(), Get.find(), Get.find()));
+    Get.put(TaskListController(Get.find(), Get.find(), Get.find(), Get.find()));
   }
 }
