@@ -66,10 +66,26 @@ class TaskListController extends GetxController with StateMixin<TaskListState> {
   }
 
   Future<void> onTapAddTask() async {
-    await _router.pushNamed("/add_task");
+    final result = await _router.pushNamed("/add_task");
+    if (result == null) return;
+    if (state is TaskListLoaded) {
+      final currentState = state as TaskListLoaded;
+      listKey.currentState!.insertItem(currentState.tasks.length);
+      return change(currentState.copyWith(tasks: currentState.tasks..add(result)));
+    }
+    if (state is TaskListEmpty) {
+      return change(TaskListLoaded(tasks: [result]));
+    }
   }
 
-  onTapUpdateTask(TaskEntity p1) async {
-    await _router.pushNamed("/details_task", args: p1);
+  onTapUpdateTask(TaskEntity task) async {
+    final result = await _router.pushNamed("/details_task", args: task);
+    if (result == null) return;
+    final currentState = state as TaskListLoaded;
+    final tasks = currentState.tasks;
+    final index = tasks.indexWhere((e) => e.id == (result as TaskEntity).id);
+    if (index < 0) return;
+    tasks[index] = (result as TaskEntity);
+    change(currentState.copyWith(tasks: tasks));
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 import '../../../../../core/widgets/mixin/date_mixin/date_mixin.dart';
 import '../../../domain/entities/task_entity.dart';
@@ -23,30 +24,32 @@ class TaskTile extends StatelessWidget with DateMixin {
     final title = task.title;
     final date = "Criado em ${parseDate(task.createdIn)}";
     final hasCompleted = task.hasCompleted;
-
     return SizeTransition(
       sizeFactor: animation,
-      child: InkWell(
-        onTap: onTapUpdateTask == null ? null : () => onTapUpdateTask!(task),
-        child: Card(
-          margin: EdgeInsets.symmetric(vertical: 5),
-          child: ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10),
-            title: Text(title),
-            subtitle: Text(date, style: TextTheme.of(context).labelSmall),
-            leading: IconButton(
-              onPressed: onChangeStatusTask == null ? null : () => onChangeStatusTask!(task),
-              icon: Icon(
+      child: Card(
+        // margin: EdgeInsets.symmetric(vertical: 5),
+        child: ListTile(
+          onTap: onTapUpdateTask == null ? null : () => onTapUpdateTask!(task),
+          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+          title: TextAnimator(title, key: ValueKey(title)),
+          subtitle: Text(date, style: TextTheme.of(context).labelSmall),
+          leading: IconButton(
+            onPressed: onChangeStatusTask == null ? null : () => onChangeStatusTask!(task),
+            icon: WidgetAnimator(
+              incomingEffect: WidgetTransitionEffects.incomingScaleUp(),
+              outgoingEffect: WidgetTransitionEffects.outgoingScaleDown(),
+              child: Icon(
+                key: ValueKey(hasCompleted),
                 hasCompleted ? Icons.check_circle : Icons.radio_button_unchecked,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
+          ),
 
-            trailing: IconButton(
-              color: Theme.of(context).colorScheme.error,
-              onPressed: onDelete,
-              icon: Icon(Icons.delete),
-            ),
+          trailing: IconButton(
+            color: Theme.of(context).colorScheme.error,
+            onPressed: onDelete,
+            icon: Icon(Icons.delete),
           ),
         ),
       ),
