@@ -17,7 +17,8 @@ class ImageIconsApp extends StatelessWidget {
 enum IconImage {
   success,
   cancel,
-  fail;
+  fail,
+  empty;
 
   String get path {
     switch (this) {
@@ -29,6 +30,9 @@ enum IconImage {
 
       case IconImage.fail:
         return "assets/icons/warning.webp";
+
+      case IconImage.empty:
+        return "assets/icons/empty.webp";
     }
   }
 }

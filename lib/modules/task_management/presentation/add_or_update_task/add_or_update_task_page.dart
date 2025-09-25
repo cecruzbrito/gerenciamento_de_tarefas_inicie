@@ -74,6 +74,7 @@ class _AddOrUpdateTaskPageState extends State<AddOrUpdateTaskPage> with Validato
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextFieldApp(
+                            autoFocus: true,
                             label: "Titulo",
                             hint: "Digite o título da tarefa",
                             ctr: ctr.ctrTitle,
@@ -87,12 +88,18 @@ class _AddOrUpdateTaskPageState extends State<AddOrUpdateTaskPage> with Validato
                           ),
                         ],
                       ),
-
-                      FilledButton.icon(
-                        onPressed: ctr.onTapAddTask,
-                        label: Text("Adicionar tarefa"),
-                        icon: Icon(Icons.add),
-                      ),
+                      if (state.hasAdd)
+                        FilledButton.icon(
+                          onPressed: ctr.onTapAddTask,
+                          label: Text("Adicionar tarefa"),
+                          icon: Icon(Icons.add),
+                        )
+                      else
+                        FilledButton.icon(
+                          onPressed: ctr.onTapUpdateTask,
+                          label: Text("Atualizar tarefa"),
+                          icon: Icon(Icons.refresh),
+                        ),
                     ],
                   ),
                 ),

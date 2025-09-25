@@ -2,6 +2,7 @@ import '../../../../../core/modules/cache/domain/entities/cache_entry_entity.dar
 import '../../../../../core/modules/cache/domain/repository/cache_repository.dart';
 import '../../../../../core/domain/errors/errors.dart';
 import '../../../domain/entities/task_entity.dart';
+import '../../../domain/errors/errors.dart';
 import '../../../infra/datasource/task_management_datasource.dart';
 import '../../models/task_model.dart';
 
@@ -12,6 +13,7 @@ class TaskManagementDatasourceLocalImp implements TaskManagementDatasource {
   @override
   Future<TaskEntity> addTask({required String text, bool hasCompleted = false}) async {
     try {
+      if (text.trim().isEmpty) throw FailureAddTaskEmptyTitle();
       final idTask = _generateIdentifier();
       final newTask = TaskEntity(id: idTask, createdIn: DateTime.now(), title: text, hasCompleted: hasCompleted);
       final response = await _cache.addItem(
@@ -45,7 +47,6 @@ class TaskManagementDatasourceLocalImp implements TaskManagementDatasource {
         final result = r.map((e) => TaskModel.fromMap(e.data)).toList()
           ..sort((a, b) => b.createdIn.compareTo(b.createdIn));
         return result;
-        // return result + result + result + result + result;
       });
     } on Failure {
       rethrow;

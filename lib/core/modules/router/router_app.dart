@@ -6,8 +6,5 @@ class RouterApp {
 
   pushNamed(String name, {dynamic args}) async => await Get.toNamed(name, arguments: args);
 
-  popUntil(String name) async {
-    Get.back();
-    // await Get.offNamedUntil(name, (route) => route.settings.name == name);
-  }
+  pop<T>({T? result}) => Get.back<T>(result: result);
 }

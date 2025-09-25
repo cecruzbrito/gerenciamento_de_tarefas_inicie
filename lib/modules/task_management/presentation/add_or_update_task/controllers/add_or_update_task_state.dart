@@ -22,10 +22,13 @@ class AddOrUpdateTaskInput extends AddOrUpdateTaskState {
 
 class AddTaskSuccess extends AddOrUpdateTaskState {
   final String msg;
-  AddTaskSuccess({required this.msg});
+  final TaskEntity taskCreated;
+  AddTaskSuccess({required this.msg, required this.taskCreated});
 }
 
 class UpdateTaskSuccess extends AddOrUpdateTaskState {
   final String msg;
-  UpdateTaskSuccess({required this.msg});
+  final TaskEntity taskUpdated;
+
+  UpdateTaskSuccess({required this.msg, required this.taskUpdated});
 }

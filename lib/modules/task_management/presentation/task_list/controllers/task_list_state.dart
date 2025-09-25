@@ -8,12 +8,12 @@ class TaskListStarted extends TaskListState {}
 class TaskListLoading extends TaskListState {}
 
 class TaskListEmpty extends TaskListState {
-  final String msg = "Sua lista está vazia";
+  final String msg = "Comece agora adicionando a primeira tarefa";
 }
 
 class InitialGetError extends TaskListState {
-  final String msgError;
-  InitialGetError({required this.msgError});
+  final String msg;
+  InitialGetError({required this.msg});
 }
 
 class TaskListLoaded extends TaskListState {

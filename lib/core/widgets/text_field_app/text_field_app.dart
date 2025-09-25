@@ -15,6 +15,7 @@ class TextFieldApp extends StatelessWidget {
     this.onChangeTxt,
     this.onTapEnter,
     this.maxLines,
+    this.autoFocus,
   });
   final TextEditingController? ctr;
   final String? label;
@@ -28,9 +29,11 @@ class TextFieldApp extends StatelessWidget {
   final int? maxLines;
   final Function(String?)? onChangeTxt;
   final Function(String?)? onTapEnter;
+  final bool? autoFocus;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: autoFocus ?? false,
       keyboardType: type,
       minLines: minLines,
       maxLines: maxLines,

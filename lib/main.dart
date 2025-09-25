@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           page: () => AddOrUpdateTaskPage(ctr: Get.find()),
         ),
         GetPage(
-          name: "/update_task",
+          name: "/details_task",
           binding: TaskManagementBinding(),
           page: () => AddOrUpdateTaskPage(ctr: Get.find(), taskToUpdate: Get.find<RouterApp>().args as TaskEntity),
         ),

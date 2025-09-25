@@ -46,7 +46,7 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
     response.fold((e) {
       change(currentState);
       SnackBarsApp.error(e.msg);
-    }, (r) => change(AddTaskSuccess(msg: 'A tarefa "${r.title}" foi adicionada com sucesso')));
+    }, (r) => change(AddTaskSuccess(msg: 'A tarefa "${r.title}" foi adicionada com sucesso', taskCreated: r)));
   }
 
   Future<void> onTapUpdateTask() async {
@@ -60,7 +60,7 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
     response.fold((e) {
       change(currentState);
       SnackBarsApp.error(e.msg);
-    }, (r) => change(UpdateTaskSuccess(msg: 'A tarefa "${r.title}" foi atualizada com sucesso')));
+    }, (r) => change(UpdateTaskSuccess(msg: 'A tarefa "${r.title}" foi atualizada com sucesso', taskUpdated: r)));
   }
 
   void onTapNewTask() {
@@ -68,5 +68,14 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
     change(AddOrUpdateTaskInput(hasCompleted: false));
   }
 
-  void onTapHome() => _router.popUntil("/");
+  void onTapHome() {
+    TaskEntity? taskResult;
+    if (state is AddTaskSuccess) {
+      taskResult = (state as AddTaskSuccess).taskCreated;
+    }
+    if (state is UpdateTaskSuccess) {
+      taskResult = (state as UpdateTaskSuccess).taskUpdated;
+    }
+    _router.pop(result: taskResult);
+  }
 }
