@@ -11,9 +11,13 @@ class TaskManagementRepositoryImp implements TaskManagementRepository {
   TaskManagementRepositoryImp(this._datasource);
 
   @override
-  Future<Either<Failure, TaskEntity>> addTask({required String title, required bool hasCompleted}) async {
+  Future<Either<Failure, TaskEntity>> addTask({
+    required String title,
+    required String description,
+    required bool hasCompleted,
+  }) async {
     try {
-      return Right(await _datasource.addTask(text: title, hasCompleted: hasCompleted));
+      return Right(await _datasource.addTask(text: title, hasCompleted: hasCompleted, description: description));
     } on Failure catch (e) {
       return Left(e);
     }

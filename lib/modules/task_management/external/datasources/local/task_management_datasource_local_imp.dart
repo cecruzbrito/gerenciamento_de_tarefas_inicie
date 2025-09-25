@@ -11,11 +11,17 @@ class TaskManagementDatasourceLocalImp implements TaskManagementDatasource {
 
   TaskManagementDatasourceLocalImp(this._cache);
   @override
-  Future<TaskEntity> addTask({required String text, bool hasCompleted = false}) async {
+  Future<TaskEntity> addTask({required String text, required String description, bool hasCompleted = false}) async {
     try {
       if (text.trim().isEmpty) throw FailureAddTaskEmptyTitle();
       final idTask = _generateIdentifier();
-      final newTask = TaskEntity(id: idTask, createdIn: DateTime.now(), title: text, hasCompleted: hasCompleted);
+      final newTask = TaskEntity(
+        id: idTask,
+        createdIn: DateTime.now(),
+        title: text,
+        hasCompleted: hasCompleted,
+        description: description,
+      );
       final response = await _cache.addItem(
         CacheKeys.tasks,
         entry: CacheEntryEntity(id: idTask, data: TaskModel.toMap(newTask)),

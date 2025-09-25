@@ -73,14 +73,27 @@ class _AddOrUpdateTaskPageState extends State<AddOrUpdateTaskPage> with Validato
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          TextFieldApp(
-                            autoFocus: true,
-                            label: "Titulo",
-                            hint: "Digite o título da tarefa",
-                            ctr: ctr.ctrTitle,
-                            validator: validatorEmpty,
+                          Column(
+                            spacing: spacingColumnItensField,
+                            children: [
+                              TextFieldApp(
+                                autoFocus: true,
+                                label: "Titulo",
+                                hint: "Digite o título da tarefa",
+                                ctr: ctr.ctrTitle,
+                                validator: validatorEmpty,
+                                textInputAction: TextInputAction.next,
+                              ),
+                              TextFieldApp(
+                                textInputAction: TextInputAction.done,
+                                ctr: ctr.ctrDesc,
+                                label: "Descrição (opcional)",
+                                hint: "Adicione detalhes ou observações (opcional)",
+                                minLines: 3,
+                                maxLines: 5,
+                              ),
+                            ],
                           ),
-
                           TextButton.icon(
                             onPressed: ctr.onTapCompletedTask,
                             label: Text(state.hasCompleted ? "Finalizada" : "Pendente"),

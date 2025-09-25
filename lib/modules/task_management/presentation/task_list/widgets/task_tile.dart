@@ -22,6 +22,7 @@ class TaskTile extends StatelessWidget with DateMixin {
   @override
   Widget build(BuildContext context) {
     final title = task.title;
+    final desc = task.description ?? "";
     final date = "Criado em ${parseDate(task.createdIn)}";
     final hasCompleted = task.hasCompleted;
     return SizeTransition(
@@ -32,7 +33,15 @@ class TaskTile extends StatelessWidget with DateMixin {
           onTap: onTapUpdateTask == null ? null : () => onTapUpdateTask!(task),
           contentPadding: EdgeInsets.symmetric(horizontal: 10),
           title: TextAnimator(title, key: ValueKey(title)),
-          subtitle: Text(date, style: TextTheme.of(context).labelSmall),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            spacing: 5,
+            children: [
+              if (desc.isNotEmpty) TextAnimator(desc, key: ValueKey(desc), style: TextTheme.of(context).bodySmall),
+              Text(date, style: TextTheme.of(context).labelSmall),
+            ],
+          ),
           leading: IconButton(
             onPressed: onChangeStatusTask == null ? null : () => onChangeStatusTask!(task),
             icon: WidgetAnimator(

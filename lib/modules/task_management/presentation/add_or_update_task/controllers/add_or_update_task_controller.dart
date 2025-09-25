@@ -18,6 +18,7 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
 
   final formsKey = GlobalKey<FormState>();
   final ctrTitle = TextEditingController();
+  final ctrDesc = TextEditingController();
 
   @override
   void onInit() {
@@ -35,6 +36,7 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
 
   void initializing(TaskEntity? task) {
     ctrTitle.text = task?.title ?? "";
+    ctrDesc.text = task?.description ?? "";
     change(AddOrUpdateTaskInput(hasCompleted: task?.hasCompleted ?? false, task: task));
   }
 
@@ -42,7 +44,11 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
     if (!(formsKey.currentState?.validate() ?? false)) return;
     final currentState = state as AddOrUpdateTaskInput;
     change(AddOrUpdateStateLoading());
-    final response = await _addTaskUsecase(title: ctrTitle.text, hasCompleted: currentState.hasCompleted);
+    final response = await _addTaskUsecase(
+      title: ctrTitle.text,
+      hasCompleted: currentState.hasCompleted,
+      description: ctrDesc.text,
+    );
     response.fold((e) {
       change(currentState);
       SnackBarsApp.error(e.msg);
@@ -55,7 +61,11 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
     change(AddOrUpdateStateLoading());
     final response = await _updateTaskUsecase(
       oldTask: currentState.task!,
-      newTask: currentState.task!.copyWith(hasCompleted: currentState.hasCompleted, title: ctrTitle.text),
+      newTask: currentState.task!.copyWith(
+        description: ctrDesc.text,
+        hasCompleted: currentState.hasCompleted,
+        title: ctrTitle.text,
+      ),
     );
     response.fold((e) {
       change(currentState);
@@ -65,6 +75,7 @@ class AddTaskController extends GetxController with StateMixin<AddOrUpdateTaskSt
 
   void onTapNewTask() {
     ctrTitle.clear();
+    ctrDesc.clear();
     change(AddOrUpdateTaskInput(hasCompleted: false));
   }
 
