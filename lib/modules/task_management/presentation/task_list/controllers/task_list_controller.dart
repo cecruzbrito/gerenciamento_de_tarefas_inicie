@@ -1,4 +1,6 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:gerenciamento_de_tarefas/core/modules/router/router_app.dart';
 import 'package:gerenciamento_de_tarefas/core/widgets/snack_bars_app/snack_bars_app.dart';
 import 'package:gerenciamento_de_tarefas/modules/task_management/domain/entities/task_entity.dart';

@@ -9,13 +9,14 @@ class HeaderBodyApp extends StatelessWidget with PaddingApp {
   final EdgeInsets? padding;
   @override
   Widget build(BuildContext context) {
+    var textTheme = TextTheme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 20,
       children: [
         Padding(
           padding: padding ?? paddingScrollDefault,
-          child: Text(title, style: TextTheme.of(context).headlineMedium),
+          child: Text(title, style: textTheme.headlineMedium),
         ),
         body,
       ],

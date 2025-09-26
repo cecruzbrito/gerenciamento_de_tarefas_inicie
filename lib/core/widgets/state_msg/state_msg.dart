@@ -12,17 +12,18 @@ class StateMsg extends StatelessWidget with PaddingApp {
   final String msg;
   final List<Widget> buttons;
 
-  static StateMsg success(String msg, {String? title, required List<Widget> buttons}) =>
-      StateMsg(icon: IconImage.success, title: title ?? "Sucesso!", msg: msg, buttons: buttons);
+  static StateMsg success(String msg, {String? title, required List<Widget> buttons, Key? key}) =>
+      StateMsg(icon: IconImage.success, title: title ?? "Sucesso!", msg: msg, buttons: buttons, key: key);
 
-  static StateMsg empty(String msg, {String? title, required List<Widget> buttons}) =>
-      StateMsg(icon: IconImage.empty, title: title ?? "Sua lista está vazia", msg: msg, buttons: buttons);
+  static StateMsg empty(String msg, {String? title, required List<Widget> buttons, Key? key}) =>
+      StateMsg(icon: IconImage.empty, title: title ?? "Sua lista está vazia", msg: msg, buttons: buttons, key: key);
 
-  static StateMsg error(String msg, {String? title, required List<Widget> buttons}) =>
-      StateMsg(icon: IconImage.fail, title: title ?? "Erro!", msg: msg, buttons: buttons);
+  static StateMsg error(String msg, {String? title, required List<Widget> buttons, Key? key}) =>
+      StateMsg(icon: IconImage.fail, title: title ?? "Erro!", msg: msg, buttons: buttons, key: key);
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: paddingScrollDefault,
       child: Center(
@@ -32,8 +33,8 @@ class StateMsg extends StatelessWidget with PaddingApp {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ImageIconsApp(icon: icon),
-            Text(title, style: Theme.of(context).textTheme.headlineMedium),
-            Text(msg, style: Theme.of(context).textTheme.bodyMedium, textAlign: TextAlign.center),
+            Text(title, style: textTheme.headlineMedium),
+            Text(msg, style: textTheme.bodyMedium, textAlign: TextAlign.center),
             Column(children: buttons),
           ],
         ),

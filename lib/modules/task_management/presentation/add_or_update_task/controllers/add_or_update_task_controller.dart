@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_de_tarefas/core/widgets/snack_bars_app/snack_bars_app.dart';
 import 'package:gerenciamento_de_tarefas/modules/task_management/domain/entities/task_entity.dart';
@@ -5,7 +6,6 @@ import 'package:gerenciamento_de_tarefas/modules/task_management/domain/usecases
 import 'package:gerenciamento_de_tarefas/modules/task_management/domain/usecases/update_task/task_management_usecase_update_task.dart';
 import 'package:get/get.dart';
 
-import '../../../../../core/domain/entites/operation_entity.dart';
 import '../../../../../core/modules/router/router_app.dart';
 
 part 'add_or_update_task_state.dart';

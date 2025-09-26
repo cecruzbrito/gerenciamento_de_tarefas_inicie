@@ -25,6 +25,10 @@ class TaskTile extends StatelessWidget with DateMixin {
     final desc = task.description ?? "";
     final date = "Criado em ${parseDate(task.createdIn)}";
     final hasCompleted = task.hasCompleted;
+
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+    final colorSchemeTheme = theme.colorScheme;
     return SizeTransition(
       sizeFactor: animation,
       child: Card(
@@ -38,8 +42,8 @@ class TaskTile extends StatelessWidget with DateMixin {
             mainAxisAlignment: MainAxisAlignment.start,
             spacing: 5,
             children: [
-              if (desc.isNotEmpty) TextAnimator(desc, key: ValueKey(desc), style: TextTheme.of(context).bodySmall),
-              Text(date, style: TextTheme.of(context).labelSmall),
+              if (desc.isNotEmpty) TextAnimator(desc, key: ValueKey(desc), style: textTheme.bodySmall),
+              Text(date, style: textTheme.labelSmall),
             ],
           ),
           leading: IconButton(
@@ -50,16 +54,12 @@ class TaskTile extends StatelessWidget with DateMixin {
               child: Icon(
                 key: ValueKey(hasCompleted),
                 hasCompleted ? Icons.check_circle : Icons.radio_button_unchecked,
-                color: Theme.of(context).colorScheme.primary,
+                color: colorSchemeTheme.primary,
               ),
             ),
           ),
 
-          trailing: IconButton(
-            color: Theme.of(context).colorScheme.error,
-            onPressed: onDelete,
-            icon: Icon(Icons.delete),
-          ),
+          trailing: IconButton(color: colorSchemeTheme.error, onPressed: onDelete, icon: Icon(Icons.delete)),
         ),
       ),
     );
