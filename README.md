@@ -164,7 +164,7 @@ stateDiagram-v2
   if_state1 --> TaskListEmpty : tasks.isEmpty
   if_state1 --> InitialGetError : hasError
   InitialGetError --> TaskListLoading : getTasks()
-  TaskListLoaded --> TaskListLoaded : deleteTask(task),\nchangeStatusTask()
+  TaskListLoaded --> TaskListLoaded : deleteTask(task), changeStatusTask()
   TaskListEmpty --> AddTaskPage : goToAddTask()
   TaskListLoaded --> AddTaskPage : goToAddTask()
   TaskListLoaded --> UpdateTaskPage : goToAddTask()
@@ -172,11 +172,11 @@ stateDiagram-v2
   UpdateTaskPage --> TaskListLoaded : TASK
 
   note right of AddTaskPage
-    Retorna a\ntarefa criafa
+    Retorna a tarefa criada
   end note
 
   note right of UpdateTaskPage
-    Retorna a\ntarefa atualizada
+    Retorna a tarefa atualizada
   end note
 ```
 
@@ -191,15 +191,15 @@ stateDiagram-v2
     [*] --> AddOrUpdateTaskStarted
     AddOrUpdateTaskStarted --> AddOrUpdateTaskInput
     state if_state1 <<choice>>
-    AddOrUpdateTaskInput --> if_state1: onTapAddTask(),\nonTapUpdateTask()
-    if_state1 --> AddTaskSuccess : hasNoError,\nhasAddOperation
-    if_state1 --> UpdateTaskSuccess : hasNoError,\nhasUpdateOperation
+    AddOrUpdateTaskInput --> if_state1: onTapAddTask(),onTapUpdateTask()
+    if_state1 --> AddTaskSuccess : hasNoError,hasAddOperation
+    if_state1 --> UpdateTaskSuccess : hasNoError,hasUpdateOperation
     if_state1 --> AddOrUpdateTaskInput : hasError
     AddTaskSuccess --> [*] : onTapHome(taskUpdated)
     UpdateTaskSuccess --> [*] : onTapHome(taskUpdated)
 
     note right of if_state1
-        A mensagem do erro é\nexibido numa snackbar\nno estado de input
+        A mensagem do erro é exibido numa snackbarno estado de input
     end note
 ```
 
