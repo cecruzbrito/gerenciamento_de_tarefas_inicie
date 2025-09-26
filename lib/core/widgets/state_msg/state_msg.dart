@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import 'package:gerenciamento_de_tarefas/core/widgets/mixin/padding_app/padding_app.dart';
-
 import '../image_icons/image_icons_app.dart';
+import '../mixin/padding_app/padding_app.dart';
 
 class StateMsg extends StatelessWidget with PaddingApp {
   StateMsg({super.key, required this.icon, required this.title, required this.msg, required this.buttons});

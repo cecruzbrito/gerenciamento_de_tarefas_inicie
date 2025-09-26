@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/loading_app/loading_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/mixin/padding_app/padding_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/mixin/validators_fields/validator_fields.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/scroll/scroll_app.dart';
-import 'package:gerenciamento_de_tarefas/modules/task_management/domain/entities/task_entity.dart';
-import 'package:gerenciamento_de_tarefas/modules/task_management/presentation/add_or_update_task/controllers/add_or_update_task_controller.dart';
 import 'package:get/get.dart';
 import 'package:widget_and_text_animator/widget_and_text_animator.dart';
 
 import '../../../../core/widgets/header_body/header_body_app.dart';
+import '../../../../core/widgets/loading_app/loading_app.dart';
+import '../../../../core/widgets/mixin/padding_app/padding_app.dart';
+import '../../../../core/widgets/mixin/validators_fields/validator_fields.dart';
 import '../../../../core/widgets/scaffod_app/scaffold_app.dart';
+import '../../../../core/widgets/scroll/scroll_app.dart';
 import '../../../../core/widgets/state_msg/state_msg.dart';
 import '../../../../core/widgets/text_field_app/text_field_app.dart';
+import '../../domain/entities/task_entity.dart';
+import 'controllers/add_or_update_task_controller.dart';
 
 class AddOrUpdateTaskPage extends StatefulWidget {
   const AddOrUpdateTaskPage({super.key, required this.ctr, this.taskToUpdate});

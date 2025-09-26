@@ -1,14 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:gerenciamento_de_tarefas/core/modules/router/router_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/snack_bars_app/snack_bars_app.dart';
-import 'package:gerenciamento_de_tarefas/modules/task_management/domain/entities/task_entity.dart';
-import 'package:gerenciamento_de_tarefas/modules/task_management/domain/usecases/delete_task/task_management_usecase_delete_task.dart';
-import 'package:gerenciamento_de_tarefas/modules/task_management/domain/usecases/update_task/task_management_usecase_update_task.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/modules/router/router_app.dart';
+import '../../../../../core/widgets/snack_bars_app/snack_bars_app.dart';
+import '../../../domain/entities/task_entity.dart';
+import '../../../domain/usecases/delete_task/task_management_usecase_delete_task.dart';
 import '../../../domain/usecases/get_tasks/task_management_usecase_get_tasks.dart';
+import '../../../domain/usecases/update_task/task_management_usecase_update_task.dart';
 
 part 'task_list_state.dart';
 

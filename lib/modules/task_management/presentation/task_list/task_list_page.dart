@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/header_body/header_body_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/loading_app/loading_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/scaffod_app/scaffold_app.dart';
-import 'package:gerenciamento_de_tarefas/core/widgets/scroll/scroll_app.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 import '../../../../core/widgets/animation/animated_switch_between_states/animated_switch_between_states.dart';
+import '../../../../core/widgets/header_body/header_body_app.dart';
+import '../../../../core/widgets/loading_app/loading_app.dart';
+import '../../../../core/widgets/scaffod_app/scaffold_app.dart';
+import '../../../../core/widgets/scroll/scroll_app.dart';
 import '../../../../core/widgets/state_msg/state_msg.dart';
 import 'controllers/task_list_controller.dart';
 import 'widgets/task_tile.dart';

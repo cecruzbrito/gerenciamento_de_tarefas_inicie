@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gerenciamento_de_tarefas/core/domain/theme/theme.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 
 import 'core/core_binding.dart';
+import 'core/domain/theme/theme.dart';
 import 'core/modules/router/router_app.dart';
 import 'modules/task_management/domain/entities/task_entity.dart';
 import 'modules/task_management/presentation/add_or_update_task/add_or_update_task_page.dart';

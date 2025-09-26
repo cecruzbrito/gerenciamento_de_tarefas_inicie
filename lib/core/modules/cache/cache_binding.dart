@@ -1,9 +1,9 @@
-import 'package:gerenciamento_de_tarefas/core/modules/cache/datasource/datasource/cache_datasource_imp.dart';
-import 'package:gerenciamento_de_tarefas/core/modules/cache/infra/repository/cache_repository_imp.dart';
 import 'package:get/get.dart';
 
+import 'datasource/datasource/cache_datasource_imp.dart';
 import 'domain/repository/cache_repository.dart';
 import 'infra/datasources/cache_datasource.dart';
+import 'infra/repository/cache_repository_imp.dart';
 
 class CacheBinding extends Bindings {
   @override
