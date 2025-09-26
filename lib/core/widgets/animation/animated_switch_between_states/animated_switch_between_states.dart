@@ -12,7 +12,7 @@ class _AnimatedSwithBetweenStatesState extends State<AnimatedSwithBetweenStates>
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 800),
       layoutBuilder: (currentChild, previousChildren) {
         return Stack(
           children: [

@@ -71,7 +71,7 @@ class TaskListController extends GetxController with StateMixin<TaskListState> {
     if (result == null) return;
     if (state is TaskListLoaded) {
       final currentState = state as TaskListLoaded;
-      listKey.currentState!.insertItem(currentState.tasks.length);
+      listKey.currentState!.insertItem(currentState.tasks.length, duration: Duration(milliseconds: 800));
       return change(currentState.copyWith(tasks: currentState.tasks..add(result)));
     }
     if (state is TaskListEmpty) {

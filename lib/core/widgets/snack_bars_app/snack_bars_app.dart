@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../main.dart';
+import '../../../modules/app_widget.dart';
 
 class SnackBarsApp {
   static success(String msg) async {

@@ -13,6 +13,8 @@ enum RoutesApp {
   detailsTask,
   taskList;
 
+  static String initialPath = RoutesApp.taskList.path;
+
   String get path => switch (this) {
     RoutesApp.addTask => "/add_task",
     RoutesApp.detailsTask => "/details_task",
