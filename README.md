@@ -1,7 +1,7 @@
 <a id="processo-seletivo-inicie"></a>
 # 📄 Processo Seletivo Inicie
 A "Lista de Tarefas" foi uma aplicação desenvolvida para o processo seletivo da Inicie que é capaz de gerenciar tarefas, consistidas por titulo, descrição, status (finalizada/pendente) e data de criação, persistidas localmente.
-# Indice
+# 📑 Indice
 - [Processo Seletivo Inicie](#processo-seletivo-inicie)
 - [Arquitetura](#arquitetura)
   - [Camadas do Módulo](#camadas-do-módulo)
@@ -13,9 +13,11 @@ A "Lista de Tarefas" foi uma aplicação desenvolvida para o processo seletivo d
 - [Diagramação na aplicação](#diagramação-na-aplicação)
 - [Pacotes Utilizados](#pacotes-utilizados)
   - [Injeção de dependências, gerenciamento de estado e Navegação (get)](#injecao-de-dependencias-gerenciamento-de-estado-e-navegacao-get)
+  - [Estados das Páginas (equatable)](#estados-das-paginas)
   - [Programação funcional e fluxo seguro com Either (dartz)](#programacao-funcional-e-fluxo-seguro-com-either-dartz)
   - [Cache (shared_preferences)](#cache)
   - [Splash Screens e Ícone da Aplicação](#splash)
+  - [Animações de surgimento e recolhimento (widget_and_text_animator)](#widget_and_text_animator)
 - [Páginas e Fluxos](#paginas-e-fluxos)
   - [Lista de tarefas](#lista-de-tarefas)
   - [Adicionar/Atualizar Tarefa](#adicionar-atualizar-tarefa)
@@ -55,7 +57,7 @@ Contém as **entidades** e os **contratos de repositório**, totalmente isolados
 Implementa os repositórios definidos no domínio e define a comunicação com fontes de dados (como APIs ou banco local).
 
 ### `external/`
-Faz a ponte com o ambiente externo. Inclui as **implementações dos data sources** e os **conversores** entre `models` e `entities`.
+Faz a ponte com o ambiente externo. Inclui as **implementações dos datasources** e os **conversores** entre `models` e `entities`.
 
 ### `presentation/`
 Responsável pela interface do usuário e gerenciamento de estado. Consome diretamente os repositórios, **sem uso de use cases**, para manter o fluxo mais direto.
@@ -128,6 +130,11 @@ Estes são os principais pacotes usados em todo o projeto para dar suporte à ar
 
 O projeto utiliza o framework Get para lidar de forma unificada com injeção de dependências, gerenciamento de estado e navegação. A injeção de dependências é simplificada pelo mecanismo de bindings do Get, que garante a criação e disponibilização dos controladores sempre que necessário. Para o gerenciamento de estados, foi adotado o padrão baseado no StateMixin dentro dos GetControllers, permitindo definir de forma explícita os diferentes estados de uma página e reagir a mudanças de maneira clara e previsível. Já a navegação é tratada pelo sistema de rotas do Get, que oferece transições consistentes e flexíveis entre telas, mantendo o fluxo da aplicação organizado e fácil de manter.
 
+<a id="estados-das-paginas"></a>
+## ⚖️ Estados das Páginas (equatable)
+
+Os estados das páginas foram implementados utilizando o pacote equatable, o que permite comparações eficientes entre objetos e simplifica a definição de igualdade entre diferentes estados.
+
 <a id="programacao-funcional-e-fluxo-seguro-com-either-dartz"></a>
 ## 📄 Programação funcional e fluxo seguro com Either (dartz)
 
@@ -139,7 +146,13 @@ Utilizamos a biblioteca dartz para aplicar conceitos de programação funcional,
 O projeto faz uso do pacote shared_preferences para implementar o cache local. Esse recurso permite armazenar pares chave-valor de forma persistente no dispositivo, garantindo que informações importantes, como preferências do usuário e estados simples da aplicação, sejam recuperadas rapidamente mesmo após o fechamento ou reinício do app. O uso do shared_preferences proporciona uma solução leve e eficiente para persistência de dados sem a necessidade de um SGBD completo.
 
 <a id="splash"></a>
-## ⚡🎨 Splash Screens e Ícone da Aplicação
+## ⚡🎨 Splash Screens e Ícone da Aplicação (flutter_native_splash e flutter_launcher_icons)
+
+Tanto para a configuração das telas de splash quanto para a definição do ícone da aplicação, o projeto faz uso de dependências específicas que automatizam esses processos. Para as splash screens, foi adotado o pacote flutter_native_splash, adicionado como dependência de desenvolvimento, que gera o código nativo necessário e garante consistência visual entre as plataformas. Já para o ícone da aplicação, foi utilizado o flutter_launcher_icons, também como dependência de desenvolvimento, permitindo a criação automática de ícones em diferentes resoluções e formatos exigidos por Android e iOS.
+
+<a id="widget_and_text_animator"></a>
+## ⚡🎨 Animações de surgimento e recolhimento (widget_and_text_animator)
+Para animações rapidas simples de surgimento e recolhimento foi utilizado o pacote widget_and_text_animator.
 
 Tanto para a configuração das telas de splash quanto para a definição do ícone da aplicação, o projeto faz uso de dependências específicas que automatizam esses processos. Para as splash screens, foi adotado o pacote flutter_native_splash, adicionado como dependência de desenvolvimento, que gera o código nativo necessário e garante consistência visual entre as plataformas. Já para o ícone da aplicação, foi utilizado o flutter_launcher_icons, também como dependência de desenvolvimento, permitindo a criação automática de ícones em diferentes resoluções e formatos exigidos por Android e iOS.
 
