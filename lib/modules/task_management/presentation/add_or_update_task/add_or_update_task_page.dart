@@ -45,16 +45,7 @@ class _AddOrUpdateTaskPageState extends State<AddOrUpdateTaskPage> with Validato
               return StateMsg.success(
                 state.msg,
                 buttons: [
-                  FilledButton.icon(
-                    icon: Icon(Icons.add),
-                    onPressed: ctr.onTapNewTask,
-                    label: Text("Adicionar outra tarefa"),
-                  ),
-                  OutlinedButton.icon(
-                    icon: Icon(Icons.home),
-                    onPressed: ctr.onTapHome,
-                    label: Text("Voltar ao início"),
-                  ),
+                  FilledButton.icon(icon: Icon(Icons.home), onPressed: ctr.onTapHome, label: Text("Voltar ao início")),
                 ],
               );
             }
